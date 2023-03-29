@@ -5,7 +5,7 @@
 
   async function pyver() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    result = await invoke("pyVer");
+    result = await invoke("py_ver");
   }
 </script>
 

@@ -8,7 +8,7 @@ a = Analysis(
     ['backend.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('resources\\pp.txt', 'resources')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

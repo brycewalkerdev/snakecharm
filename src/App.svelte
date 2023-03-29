@@ -1,5 +1,6 @@
 <script lang="ts">
   import Pyadd from "./lib/Pyadd.svelte";
+  import PyIngest from "./lib/PyIngest.svelte";
   import Pyver from "./lib/Pyver.svelte";
 </script>
 
@@ -11,6 +12,10 @@
 
   <div class="row">
     <Pyver />
+  </div>
+
+  <div class="row">
+    <PyIngest />
   </div>
 </main>
 

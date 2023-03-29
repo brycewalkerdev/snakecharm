@@ -1,4 +1,6 @@
 import sys
+import os
+import string
 
 
 def main(operation, args):
@@ -21,6 +23,8 @@ def main(operation, args):
             print(sys.version)
         case "addition":
             addition(*args)
+        case "ingest":
+            print(ingest_article())
         case _:
             raise Exception(f"Unknown operation: {operation}")
 
@@ -41,6 +45,43 @@ def addition(*args):
         raise ValueError("Arguments must be numbers.")
 
 
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller"""
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+
+def ingest_article():
+    """Ingest an article.
+
+    Returns:
+        Sanitize article string
+
+    """
+
+    with open(resource_path("resources/pp.txt"), "r") as f:
+        raw = f.read()
+        text = sanitize(raw)
+        return text
+
+
+# Clean File and return new string
+def sanitize(f):  # (file) => String
+    # Replace hyphens with spaces
+    f = f.replace("-", " ")
+    # Remove punctuation
+    f = f.translate(str.maketrans("", "", string.punctuation))
+    # Make lowercase
+    f = f.lower()
+
+    return f
+
+
 main(sys.argv[1], sys.argv[2:])
 
-input("Press the any key: ")
+# input("Press the any key: ")
