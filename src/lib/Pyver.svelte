@@ -1,30 +1,17 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/tauri";
 
-  let addOne = "";
-  let addTwo = "";
   let result = "";
 
-  async function add() {
+  async function pyver() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    result = await invoke("pyadd", {
-      addOne,
-      addTwo,
-    });
+    result = await invoke("pyVer");
   }
 </script>
 
 <div>
   <div class="row">
-    <p>First number to add:</p>
-    <input type="text" bind:value={addOne} />
+    <button on:click={pyver}> Get Version </button>
   </div>
-  <div class="row">
-    <p>Second number to add:</p>
-    <input type="text" bind:value={addTwo} />
-  </div>
-  <div class="row">
-    <button on:click={add}> Add </button>
-  </div>
-  <p>Result is: {result}</p>
+  <p>Current Python Version is: {result}</p>
 </div>
