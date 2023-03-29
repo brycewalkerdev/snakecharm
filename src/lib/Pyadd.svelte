@@ -15,16 +15,37 @@
 </script>
 
 <div>
-  <div class="row">
-    <p>First number to add:</p>
-    <input type="text" bind:value={addOne} />
-  </div>
-  <div class="row">
-    <p>Second number to add:</p>
-    <input type="text" bind:value={addTwo} />
-  </div>
-  <div class="row">
+  <div class="container">
+    <div class="two-wide">
+    <div class="two-wide">
+      <div class="input-container">
+        <p>First number to add:</p>
+        <input type="text" bind:value={addOne} />
+      </div>
+      <div class="input-contianer">
+        <p>Second number to add:</p>
+        <input type="text" bind:value={addTwo} />
+      </div>
+    </div>
     <button on:click={add}> Add </button>
+    <p>Result is: {result}</p>
   </div>
-  <p>Result is: {result}</p>
 </div>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .two-wide {
+    grid-column: 1 / 3;
+  }
+  .input-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+</style>

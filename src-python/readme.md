@@ -13,3 +13,5 @@ pyinstaller --clean --onefile -y -n "backend" --add-data="resources\pp.txt;resou
 
 ## Build
 pyinstaller --clean --onefile -y -n "backend-x86_64-pc-windows-msvc" --add-data="resources\pp.txt;resources" backend.py
+
+Remember when building for OSX and Linux that the separator is : not ;

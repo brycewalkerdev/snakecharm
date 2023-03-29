@@ -1,17 +1,19 @@
 <script lang="ts">
-  import Pyadd from "./lib/Pyadd.svelte";
   import PyIngest from "./lib/PyIngest.svelte";
-  import Pyver from "./lib/Pyver.svelte";
+  import PyVer from "./lib/PyVer.svelte";
+  import PyAdd from "./lib/PyAdd.svelte";
 </script>
 
 <main class="container">
-  <h1>Press the buttons</h1>
+  <div class="header">
+    <h1>Test Suite for Python-Rust Binding</h1>
+  </div>
   <div class="row">
-    <Pyadd />
+    <PyAdd />
   </div>
 
   <div class="row">
-    <Pyver />
+    <PyVer />
   </div>
 
   <div class="row">
@@ -20,4 +22,14 @@
 </main>
 
 <style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .header {
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 900;
+    color: whitesmoke;
+  }
 </style>

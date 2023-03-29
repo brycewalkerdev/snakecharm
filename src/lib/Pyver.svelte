@@ -10,8 +10,17 @@
 </script>
 
 <div>
-  <div class="row">
+  <div class="container">
     <button on:click={pyver}> Get Version </button>
+    <p>Current Python Version is: {result}</p>
   </div>
-  <p>Current Python Version is: {result}</p>
 </div>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 2, 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+</style>
