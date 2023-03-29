@@ -1,0 +1,25 @@
+<script lang="ts">
+  import Pyver from "./lib/Pyver.svelte";
+  import Greet from "./lib/Greet.svelte";
+</script>
+
+<main class="container">
+  <h1>Click the god damn buttons</h1>
+  <div class="row">
+    <Greet />
+  </div>
+
+  <div class="row">
+    <Pyver />
+  </div>
+</main>
+
+<style>
+  .logo.vite:hover {
+    filter: drop-shadow(0 0 2em #747bff);
+  }
+
+  .logo.svelte:hover {
+    filter: drop-shadow(0 0 2em #ff3e00);
+  }
+</style>
