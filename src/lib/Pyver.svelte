@@ -1,5 +1,7 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/tauri";
+  import { Button } from "flowbite-svelte";
+  import { CodeSnippet } from "carbon-components-svelte";
 
   let result = "";
 
@@ -11,16 +13,10 @@
 
 <div>
   <div class="container">
-    <button on:click={pyver}> Get Version </button>
-    <p>Current Python Version is: {result}</p>
+    <Button color="green" on:click={pyver}>Get Version</Button>
+    <CodeSnippet code="Python Version: {result}" />
   </div>
 </div>
 
 <style>
-  .container {
-    display: grid;
-    grid-template-columns: 2, 1fr;
-    justify-items: center;
-    text-align: center;
-  }
 </style>

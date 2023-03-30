@@ -1,12 +1,12 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/tauri";
-
+  import { TextBox } from "fluent-svelte";
+  import { Button } from "fluent-svelte";
   let addOne = "";
   let addTwo = "";
   let result = "";
 
   async function add() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
     result = await invoke("py_add", {
       addOne,
       addTwo,
@@ -17,35 +17,26 @@
 <div>
   <div class="container">
     <div class="two-wide">
-    <div class="two-wide">
-      <div class="input-container">
-        <p>First number to add:</p>
-        <input type="text" bind:value={addOne} />
+      <div class="two-wide">
+        <div class="input-container">
+          <TextBox
+            labelText="First Number to Add"
+            placeholder="23"
+            bind:value={addOne}
+          />
+        </div>
+        <div class="input-contianer">
+          <TextBox
+            labelText="Second Number to Add"
+            placeholder="56"
+            bind:value={addTwo}
+          />
+        </div>
       </div>
-      <div class="input-contianer">
-        <p>Second number to add:</p>
-        <input type="text" bind:value={addTwo} />
-      </div>
+      <Button on:click={add} variant="accent">Button</Button>
+      <p>
+        {result}
+      </p>
     </div>
-    <button on:click={add}> Add </button>
-    <p>Result is: {result}</p>
   </div>
 </div>
-
-<style>
-  .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-  }
-  .two-wide {
-    grid-column: 1 / 3;
-  }
-  .input-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-  }
-</style>

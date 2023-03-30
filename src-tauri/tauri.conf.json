@@ -12,6 +12,17 @@
   },
   "tauri": {
     "allowlist": {
+          "window": {
+            "all": false,
+            "close": true,
+            "hide": true,
+            "show": true,
+            "maximize": true,
+            "minimize": true,
+           "unmaximize": true,
+           "unminimize": true,
+           "startDragging": true
+      },
       "all": false,
       "shell": {
         "all": false,
@@ -54,6 +65,8 @@
         "fullscreen": false,
         "resizable": true,
         "title": "snakecharm",
+        "transparent": true,
+        "decorations": false,
         "width": 800,
         "height": 600
       }

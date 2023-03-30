@@ -2,8 +2,11 @@
   import PyIngest from "./lib/PyIngest.svelte";
   import PyVer from "./lib/PyVer.svelte";
   import PyAdd from "./lib/PyAdd.svelte";
+  import TitleBar from "./lib/TitleBar.svelte";
+  import "fluent-svelte/theme.css";
 </script>
 
+<TitleBar />
 <main class="container">
   <div class="header">
     <h1>Test Suite for Python-Rust Binding</h1>
@@ -23,13 +26,6 @@
 
 <style>
   .container {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  .header {
-    text-align: center;
-    font-family: "JetBrains Mono", monospace;
-    font-weight: 900;
-    color: whitesmoke;
+    color: white;
   }
 </style>
