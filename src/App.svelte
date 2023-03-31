@@ -7,6 +7,7 @@
   import { textColor } from "./stores";
 
   let textColorValue;
+  let titleBarColor;
 
   textColor.subscribe((value) => {
     textColorValue = value;
@@ -14,7 +15,7 @@
 </script>
 
 <TitleBar />
-<div class="titlebar-spacer" />
+<div class="titlebar-spacer" style="background: inherit" />
 <div class="wrapper">
   <div class="left-container">
     <h1>Sidebar Text</h1>
@@ -69,7 +70,6 @@
   }
   .titlebar-spacer {
     height: 35px;
-    background: inherit;
   }
 
   h1 {

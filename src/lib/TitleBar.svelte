@@ -18,9 +18,26 @@
       }
     });
   }
+  let titleBarColor = "inherit";
+  window.addEventListener("scroll", (event) => {
+    let scroll = window.scrollY;
+    if (scroll < 10) {
+      titleBarColor = "inherit";
+    } else {
+      if (textColorValue == "white") {
+        titleBarColor = "black";
+      } else {
+        titleBarColor = "white";
+      }
+    }
+  });
 </script>
 
-<div data-tauri-drag-region class="titlebar">
+<div
+  data-tauri-drag-region
+  class="titlebar"
+  style="background: {titleBarColor}"
+>
   <div class="titlebar-text" style="color: {textColorValue};">SnakeCharm</div>
   <div class="Button Container">
     <div
@@ -53,7 +70,6 @@
 <style>
   .titlebar {
     height: 35px;
-    background: inherit;
     user-select: none;
     display: flex;
     justify-content: space-between;
@@ -61,6 +77,8 @@
     top: 0;
     left: 0;
     right: 0;
+    transition: all 0.07s ease-in-out;
+    z-index: 1000;
   }
   .titlebar-button {
     display: inline-flex;
