@@ -1,6 +1,13 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/tauri";
-  import { Button } from "carbon-components-svelte";
+  import { Button } from "fluent-svelte";
+  import { textColor } from "../stores";
+
+  let textColorValue;
+
+  textColor.subscribe((value) => {
+    textColorValue = value;
+  });
 
   let PyResult: string = "";
 
@@ -14,7 +21,7 @@
   <div class="row">
     <Button on:click={ingest}>Get Text</Button>
   </div>
-  <p>
-    {PyResult}
+  <p style="color: {textColorValue}">
+    Ingested Text: {PyResult}
   </p>
 </div>

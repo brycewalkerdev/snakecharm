@@ -1,21 +1,13 @@
 <script>
   import { appWindow } from "@tauri-apps/api/window";
   import Icon from "@iconify/svelte";
-  let colorMode = "";
-  if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    colorMode = "white";
-  } else {
-    colorMode = "black";
-  }
+  import { textColor } from "../stores";
 
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (event) => {
-      colorMode = event.matches ? "white" : "black";
-    });
+  let textColorValue;
+
+  textColor.subscribe((value) => {
+    textColorValue = value;
+  });
 
   async function maximize() {
     await appWindow.isMaximized().then((value) => {
@@ -29,7 +21,7 @@
 </script>
 
 <div data-tauri-drag-region class="titlebar">
-  <div class="titlebar-text" style="color: {colorMode};">SnakeCharm</div>
+  <div class="titlebar-text" style="color: {textColorValue};">SnakeCharm</div>
   <div class="Button Container">
     <div
       class="titlebar-button"
@@ -37,7 +29,7 @@
       on:click={appWindow.minimize}
       on:keydown={appWindow.minimize}
     >
-      <Icon icon="fluent:subtract-20-regular" color={colorMode} />
+      <Icon icon="fluent:subtract-20-regular" color={textColorValue} />
     </div>
     <div
       class="titlebar-button"
@@ -45,7 +37,7 @@
       on:click={maximize}
       on:keydown={maximize}
     >
-      <Icon icon="fluent:maximize-20-regular" color={colorMode} />
+      <Icon icon="fluent:maximize-20-regular" color={textColorValue} />
     </div>
     <div
       class="titlebar-button-close"
@@ -53,7 +45,7 @@
       on:click={appWindow.close}
       on:keydown={appWindow.close}
     >
-      <Icon icon="fluent:dismiss-20-regular" color={colorMode} />
+      <Icon icon="fluent:dismiss-20-regular" color={textColorValue} />
     </div>
   </div>
 </div>
@@ -87,14 +79,21 @@
     color: white;
   }
   .titlebar-button-close:hover {
-    background: #c62e2f;
+    background: #c42b1c;
   }
   .titlebar-button:hover {
-    background: #424247;
+    background: #e9e9e9;
   }
   .titlebar-text {
     text-align: center;
     align-items: center;
-    padding-left: 7px;
+    margin-top: 5px;
+    margin-left: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .titlebar-button:hover {
+      background: #2d2d2d;
+    }
   }
 </style>
