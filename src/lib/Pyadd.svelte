@@ -3,6 +3,8 @@
   import { TextBox } from "fluent-svelte";
   import { Button } from "fluent-svelte";
   import { textColor } from "../stores";
+  import { Flyout } from "fluent-svelte";
+  import Icon from "@iconify/svelte";
   let addOne = "";
   let addTwo = "";
   let result = "";
@@ -13,7 +15,15 @@
     textColorValue = value;
   });
 
+  function containsOnlyNumbers(str) {
+    return /^\d+$/.test(str);
+  }
+
   async function add() {
+    if (!containsOnlyNumbers(addOne) || !containsOnlyNumbers(addTwo)) {
+      result = "Please enter only numbers";
+      return;
+    }
     result = await invoke("py_add", {
       addOne,
       addTwo,
@@ -41,9 +51,16 @@
           />
         </div>
       </div>
-      <Button on:click={add} variant="accent">+</Button>
+      <Flyout>
+        <Button on:click={add} variant="accent"
+          ><Icon icon="fluent:add-20-regular" /></Button
+        >
+        <svelte:fragment slot="flyout"
+          >{addOne} + {addTwo} = {result}</svelte:fragment
+        >
+      </Flyout>
       <p style="color:{textColorValue}">
-        Addition Result: {result}
+        Python: {result}
       </p>
     </div>
   </div>

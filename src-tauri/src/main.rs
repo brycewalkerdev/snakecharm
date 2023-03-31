@@ -9,7 +9,7 @@ use window_vibrancy::{apply_blur, apply_mica, apply_vibrancy, NSVisualEffectMate
 #[tauri::command]
 async fn py_ingest() -> String {
     println!("Rust: Ingest Data");
-    let (mut rx, mut child) = Command::new("backend")
+    let (mut rx, child) = Command::new("backend")
         .args(["ingest"])
         .spawn()
         .expect("Failed to spawn backend");
@@ -34,7 +34,7 @@ async fn py_add(add_one: String, add_two: String) -> String {
     println!("Rust: {} + {}", add_one, add_two);
     let add_one = &add_one[..];
     let add_two = &add_two[..];
-    let (mut rx, mut child) = Command::new("backend")
+    let (mut rx, child) = Command::new("backend")
         .args(["addition", &add_one, &add_two])
         .spawn()
         .expect("Failed to spawn backend");
@@ -57,7 +57,7 @@ async fn py_add(add_one: String, add_two: String) -> String {
 #[tauri::command]
 async fn py_ver() -> String {
     println!("Rust: Get Version");
-    let (mut rx, mut child) = Command::new("backend")
+    let (mut rx, child) = Command::new("backend")
         .args(["version"])
         .spawn()
         .expect("Failed to spawn backend");
