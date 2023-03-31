@@ -7,6 +7,7 @@
 </script>
 
 <TitleBar />
+<div class="titlebar-spacer" />
 <main class="container">
   <div class="header">
     <h1>Test Suite for Python-Rust Binding</h1>
@@ -27,5 +28,10 @@
 <style>
   .container {
     color: white;
+    z-index: -1;
+  }
+  .titlebar-spacer {
+    height: 35px;
+    background: inherit;
   }
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/tauri";
-  import { Button } from "flowbite-svelte";
-  import { CodeSnippet } from "carbon-components-svelte";
+  import { Flyout } from "fluent-svelte";
+  import { Button } from "fluent-svelte";
 
   let result = "";
 
@@ -11,11 +11,11 @@
   }
 </script>
 
-<div>
-  <div class="container">
-    <Button color="green" on:click={pyver}>Get Version</Button>
-    <CodeSnippet code="Python Version: {result}" />
-  </div>
+<div class="container">
+  <Flyout>
+    <Button on:click={pyver}>Get Version</Button>
+    <svelte:fragment slot="flyout">Python Version: {result}</svelte:fragment>
+  </Flyout>
 </div>
 
 <style>
