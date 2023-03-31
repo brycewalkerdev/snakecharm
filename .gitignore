@@ -7,10 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+src-tauri/target
 node_modules
 dist
 dist-ssr
 *.local
+dist-python
+src-python/build
+src-python/release
 
 # Editor directories and files
 .vscode/*
