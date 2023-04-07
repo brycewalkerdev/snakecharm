@@ -26,3 +26,8 @@ src-python/release/
 *.njsproj
 *.sln
 *.sw?
+dist-python/backend-x86_64-pc-windows-msvc.exe
+src-python/build/backend-x86_64-pc-windows-msvc/PKG-00.toc
+src-python/build/backend-x86_64-pc-windows-msvc/EXE-00.toc
+src-python/build/backend-x86_64-pc-windows-msvc/backend-x86_64-pc-windows-msvc.pkg
+src-python/build/backend-x86_64-pc-windows-msvc/Analysis-00.toc

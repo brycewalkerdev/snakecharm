@@ -40,9 +40,9 @@ def addition(*args):
 
     """
     try:
-        print(sum(map(int, args)))
+        print(sum(map(float, args)))
     except:
-        raise ValueError("Arguments must be numbers.")
+        print("Invalid input. Arguments must be numbers.")
 
 
 def resource_path(relative_path):

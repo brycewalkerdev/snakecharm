@@ -15,15 +15,7 @@
     textColorValue = value;
   });
 
-  function containsOnlyNumbers(str) {
-    return /^\d+$/.test(str);
-  }
-
   async function add() {
-    if (!containsOnlyNumbers(addOne) || !containsOnlyNumbers(addTwo)) {
-      result = "Please enter only numbers";
-      return;
-    }
     result = await invoke("py_add", {
       addOne,
       addTwo,
